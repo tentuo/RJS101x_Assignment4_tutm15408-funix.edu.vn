@@ -1,0 +1,11 @@
++ drive google
+https://drive.google.com/file/d/163UbaGDZrBKrDehmgFi3kJEj_Z5EgZJD/view
+
++ link github
+https://github.com/tentuo/RJS101x_Assignment1_tutm-funix.edu.vn
+
++ link repository
+https://github.com/tentuo/RJS101x_Assignment1_tutm-funix.edu.vn.git
+
++ branch
+RJS101x_Assignment_15408@funix.edu.vn
