@@ -50,8 +50,8 @@ class StaffList extends Component {
             return (
                 <Card key={dish.id}
                     onClick={() => this.onDishSelect(dish)}>
-                    <Link to="/nhanvien/:dishId"><CardImg src={dish.image} height="200" width="10" /></Link>
-                    <Link to="/nhanvien/:dishId">{dish.name}</Link>
+                    <Link to='/nhanvien/:id'><CardImg src={dish.image} height="200" width="10" /></Link>
+                    <Link to='/nhanvien/:id'>{dish.name}</Link>
                 </Card>
             );
         });

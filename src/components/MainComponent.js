@@ -57,7 +57,7 @@ class Main extends Component {
 
     const StaffWithId = ({match}) => {
       return( 
-          <StaffList dish={this.state.staff((dish) => dish.dishId === parseInt(match.params.dishId,10))} />
+          <StaffList dish={this.state.staff((dish) => dish.id === parseInt(match.params.id,10))} />
       );
     };
 
@@ -66,7 +66,7 @@ class Main extends Component {
         <Header />
         <Switch>
               <Route path='/nhanvien' component={() => <StaffList dish={this.state.staff}/>} />
-              <Route path='/nhanvien/:dishId' component={StaffWithId} />
+              <Route path='/nhanvien/:id' element={StaffWithId} />
               <Route exact path='/phongban' component={() => <DptList dish={this.state.dpt}/>} />
               <Route path='/menu/:dishId' component={DishWithId} />
               <Route exact path='/bangluong' component={() => <BangLuong dish={this.state.staff} onClick={(dishId) => this.onDishSelect(dishId)} />} />
