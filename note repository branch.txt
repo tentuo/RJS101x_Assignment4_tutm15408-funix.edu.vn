@@ -2,10 +2,10 @@
 https://drive.google.com/file/d/11Y4cBfQfk-y_l0fqwA40j2zWVilTkLzS/view
 
 + link github
-https://github.com/tentuo/RJS101x_Assignment2_tutm15408-funix.edu.vn
+https://github.com/tentuo/RJS101x_Assignment3_tutm15408-funix.edu.vn
 
 + link repository
-https://github.com/tentuo/RJS101x_Assignment2_tutm15408-funix.edu.vn.git
+https://github.com/tentuo/RJS101x_Assignment3_tutm15408-funix.edu.vn
 
 + branch
 RJS101x_Assignment3_15408@funix.edu.vn
