@@ -12,6 +12,76 @@
   pointer-events: none;
 }
 
+.lop1{
+  align-items: left;
+  margin-left: 100px;
+  width: 38px;
+  height: 38px;
+  background-color: gray;
+  color: white;
+}
+
+.lop2{
+  align-items: left;
+  margin-left: 300px;
+  width:300px;
+}
+
+.lop3{
+  align-items: left;
+  margin-left: 20px;
+  background-color: blue;
+}
+
+.lop4{
+  align-items: left;
+  margin-left: 500px;
+  margin-top :-400px;
+  width: 500px;
+  height: 500px;
+}
+
+.lop5{
+  align-items: left;
+  margin-left: 150px;
+}
+
+.lop6{
+  align-items: left;
+  margin-left: 104px;
+}
+
+.lop7{
+  align-items: left;
+  margin-left: 50px;
+}
+
+.lop8{
+  align-items: left;
+  margin-left: 96px;
+}
+
+.lop9{
+  align-items: left;
+  margin-left: 86px;
+}
+
+.lop10{
+  align-items: left;
+  margin-left: 29px;
+}
+
+.lop11{
+  align-items: left;
+  margin-left: 22px;
+}
+
+.lopcss12{
+  align-items: left;
+  margin-left: 270px;
+  background-color: white;
+  color: black;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

@@ -5,6 +5,7 @@ import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 're
 import { Container, Col, Form, Row, FormGroup, Label, Input, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { DISHES } from '../shared/dishes';
 
 class Menu extends Component {
     constructor(props) {
@@ -53,7 +54,7 @@ class Menu extends Component {
     }
 
     render() {
-        const menu = this.props.dish.map((dish) => {
+        const menu = DISHES.map((dish) => {
             return (
                 <div className="col-12 col-md-5 m-1">
                     <Card key={dish.id}

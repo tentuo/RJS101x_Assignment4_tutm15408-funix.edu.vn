@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import { Navbar, NavbarBrand } from 'reactstrap';
-import Menu from './MenuComponent';
-import DishDetail from './DishdetailComponent';
-import { DISHES } from '../shared/dishes';
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
 import Home from './HomeComponent';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect, Routes } from 'react-router-dom';
 import Contact from './ContactComponent';
+import { DISHES } from '../shared/dishes';
 import { COMMENTS } from '../shared/comments';
 import { PROMOTIONS } from '../shared/promotions';
 import { LEADERS } from '../shared/leaders';
@@ -16,6 +14,10 @@ import About from './AboutComponent';
 import StaffList from './StaffListComponent';
 import DptList from './DptListComponent';
 import BangLuong from './BangLuong';
+import Nvchitiet from './Nvchitiet';
+import Btnthem from './Btnthem';
+import Header1 from './HeaderComponent1';
+import Footer1 from './FooterComponent1';
 
 
 class Main extends Component {
@@ -23,10 +25,6 @@ class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        dishes: DISHES,
-        comments: COMMENTS,
-        promotions: PROMOTIONS,
-        leaders: LEADERS,
         staff: STAFFS,
         dpt: DEPARTMENTS,
         selectedDish: null,
@@ -48,34 +46,39 @@ class Main extends Component {
       );
     }
 
-    const DishWithId = ({match}) => {
-      return(
-          <DishDetail dish={this.state.dishes((dish) => dish.id === parseInt(match.params.dishId,10))[0]} 
-            comments={this.state.comments.filter((comment) => comment.dishId === parseInt(match.params.dishId,10))} />
-      );
-    };
-
-    const StaffWithId = ({match}) => {
-      return( 
-          <StaffList dish={this.state.staff((dish) => dish.id === parseInt(match.params.id,10))} />
-      );
-    };
-
     return (
       <div>
-        <Header />
-        <Switch>
-              <Route path='/nhanvien' component={() => <StaffList dish={this.state.staff}/>} />
-              <Route path='/nhanvien/:id' element={StaffWithId} />
-              <Route exact path='/phongban' component={() => <DptList dish={this.state.dpt}/>} />
-              <Route path='/menu/:dishId' component={DishWithId} />
-              <Route exact path='/bangluong' component={() => <BangLuong dish={this.state.staff} onClick={(dishId) => this.onDishSelect(dishId)} />} />
-              <Redirect to="/nhanvien" />
-        </Switch>
-        <Footer />
+        <Header/>
+          <Switch>
+                <Route exact path='/'>
+                  <Header1 />
+                  <StaffList st={STAFFS}/>
+                  <Footer1 />
+                </Route>
+                <Route exact path='/nhanvien'>
+                  <Header1 />
+                  <StaffList staf={STAFFS}/>
+                  <Footer1 />
+                </Route>
+                <Route exact path='/phongban'>
+                  <Header1 />
+                  <DptList />
+                  <Footer1 />
+                </Route>
+                <Route exact path='/nhanvien/:nvId'>
+                  <Header1 />
+                  <Nvchitiet />
+                  <Footer1 />
+                </Route>
+                <Route exact path='/bangluong'>
+                  <Header1 />
+                  <BangLuong dish={this.state.staff} onClick={(dishId) => this.onDishSelect(dishId)} />
+                  <Footer1 />
+                </Route>
+          </Switch>
+        <Footer/>
       </div>
     );
   }
 }
 export default Main;
-

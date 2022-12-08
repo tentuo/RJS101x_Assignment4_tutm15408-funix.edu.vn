@@ -24,7 +24,9 @@
 
     "react-dom": "^18.2.0",
 
-    "react-router-dom": "^4.2.2",
+    "react-redux-form": "^1.16.8",
+
+    "react-router-dom": "^5.3.4",
 
     "react-scripts": "5.0.1",
 

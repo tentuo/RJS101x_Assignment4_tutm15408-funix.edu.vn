@@ -2,7 +2,7 @@ import { render } from "@testing-library/react";
 import React, { Component } from "react";
 import { Media } from 'reactstrap';
 import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 'reactstrap';
-
+import { DEPARTMENTS, ROLE, STAFFS } from '../shared/staffs';
 
 class DptList extends Component {
     constructor(props) {
@@ -37,7 +37,7 @@ class DptList extends Component {
     }
     
     render() {
-        const menu = this.props.dish.map((dish) => {
+        const menu = DEPARTMENTS.map((dish) => {
             return (
                 <div className="col-12 col-md-5 m-1">
                     <Card key={dish.id}
