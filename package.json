@@ -32,6 +32,8 @@
 
     "reactstrap": "^9.1.4",
 
+    "redux": "^3.7.2",
+
     "web-vitals": "^2.1.4"
 
   },

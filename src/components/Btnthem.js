@@ -14,6 +14,9 @@ import DptList from './DptListComponent';
 import FormThem from './FormThem';
 
 
+const required = (val) => val && val.length;
+const maxLength = (len) => (val) => !(val) || (val.length <= len);
+const minLength = (len) => (val) => val && (val.length >= len);
 function Btnthem({addNvienProp ,deleteNvienProp}) {
     const initSTAFFS = STAFFS;
 
@@ -28,6 +31,7 @@ function Btnthem({addNvienProp ,deleteNvienProp}) {
     const [overTime, setoverTime] = React.useState('');
     const [image, setimage] = React.useState('');
 
+
     const addNvien = (e) => {addNvienProp({
             id: ilist.length,
             name,
@@ -38,13 +42,30 @@ function Btnthem({addNvienProp ,deleteNvienProp}) {
             annualLeave,
             overTime,
             image: '/assets/images/alberto.png',
-    }); e.preventDefault(); setList(ilist);}
+    }); e.preventDefault(); }
 
     const deleteNvien = (e) => {deleteNvienProp(); e.preventDefault(); setList(ilist);}
+
+    
+    function validate({name}) {
+        const errors = {
+            name: '',
+        };
+        if (name.length < 3)
+            errors.name = 'First Name should be >= 3 characters';
+        else if (name.length > 10)
+            errors.name = 'First Name should be <= 10 characters';
+
+        return errors;
+    }
+    const errors = validate({name});
+
       return(
             <div>
 		                    <FormGroup>
-                                    Tên <input type="text" id="username" name="username" className="lop5" value={name} onChange={(e) => setname(e.target.value)}/><br/><br/>
+                                    Tên <input model="ten" type="text" id="username" name="username" className="lop5" value={name} onChange={(e) => setname(e.target.value)}
+                                    validators={{required, minLength: minLength(3), maxLength: maxLength(15)}}/>
+                                    <p style={{color: "red"}}>'Must be greater than 2 characters, and 15 characters or less'</p>
                                     Ngày sinh <input type="date" className="lop6" id="nsdate" value={doB} onChange={(e) => setdoB(e.target.value)}/><br/><br/>
                                     Ngày vào công ty <input type="date" className="lop7" id="nvdate" value={startDate} onChange={(e) => setstartDate(e.target.value)}/><br/><br/>
                                     Phòng ban <select className="lop8" value={department} onChange={(e) => setdepartment(e.target.value)}>
@@ -64,4 +85,6 @@ function Btnthem({addNvienProp ,deleteNvienProp}) {
 }
 
 export default Btnthem;
+
+
 

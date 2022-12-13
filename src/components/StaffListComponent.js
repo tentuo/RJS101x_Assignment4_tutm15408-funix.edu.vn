@@ -1,5 +1,5 @@
 ﻿import { render } from "@testing-library/react";
-import React, { Component, useState } from "react";
+import React, { Component, useState, useEffect } from "react";
 import { Media } from 'reactstrap';
 import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 'reactstrap';
 import { DEPARTMENTS, STAFFS } from "../shared/staffs";
@@ -12,11 +12,13 @@ import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, Jumbotron,
     Modal, ModalHeader, ModalBody} from 'reactstrap';
 import DptList from "./DptListComponent";
 
+
 function StaffList() {
+    
 
     let initSTAFFS = STAFFS;
     let [ilist, setList] = React.useState(initSTAFFS);
-    const addNvien = nvien => {setList([...ilist,nvien]); toggleModal();}
+    const addNvien = (nvien) => {setList([...ilist,nvien]); toggleModal();}
 
     const deleteNvien = nvien => {setList(ilist.filter(nvi => nvi.id !== nvien.id))}
 
@@ -30,7 +32,6 @@ function StaffList() {
     const [overTime, setoverTime] = React.useState('');
     const [image, setimage] = React.useState('');
 
-    const [isModalOpen, setModal] = React.useState(false);
 
     const [search,setSearch] = useState('');
     const menu = ilist.filter((dih) => {
@@ -48,6 +49,7 @@ function StaffList() {
         );
     });
 
+      const [isModalOpen, setModal] = React.useState(false);
       function toggleModal() {
           if(isModalOpen) { setModal(false);}
           else setModal(true);
@@ -122,7 +124,6 @@ function StaffList() {
         );
 
 };
-
 
 
 export default StaffList;

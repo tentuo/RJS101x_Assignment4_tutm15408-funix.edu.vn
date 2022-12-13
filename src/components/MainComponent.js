@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import { Navbar, NavbarBrand } from 'reactstrap';
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
@@ -20,6 +20,7 @@ import Header1 from './HeaderComponent1';
 import Footer1 from './FooterComponent1';
 
 
+
 class Main extends Component {
 
   constructor(props) {
@@ -30,6 +31,7 @@ class Main extends Component {
         selectedDish: null,
     };
   }
+
 
   onDishSelect(dishId) {
     this.setState({ selectedDish: dishId});

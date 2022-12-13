@@ -8,6 +8,7 @@ import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 
 function Nvchitiet() {
     const {nvId} = useParams();
+
     const thists = STAFFS.find(nhanvie => nhanvie.id == nvId);
 
     return(
