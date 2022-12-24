@@ -18,6 +18,8 @@ import Nvchitiet from './Nvchitiet';
 import Btnthem from './Btnthem';
 import Header1 from './HeaderComponent1';
 import Footer1 from './FooterComponent1';
+import Nvdptchitiet from './Nvdptchitiet';
+
 
 
 
@@ -65,6 +67,11 @@ class Main extends Component {
                 <Route exact path='/phongban'>
                   <Header1 />
                   <DptList />
+                  <Footer1 />
+                </Route>
+                <Route exact path='/phongban/:nvdptId'>
+                  <Header1 />
+                  <Nvdptchitiet />
                   <Footer1 />
                 </Route>
                 <Route exact path='/nhanvien/:nvId'>

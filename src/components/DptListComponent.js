@@ -3,12 +3,15 @@ import React, { Component } from "react";
 import { Media } from 'reactstrap';
 import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 'reactstrap';
 import { DEPARTMENTS, ROLE, STAFFS } from '../shared/staffs';
+import Nvdptchitiet from './Nvdptchitiet';
+import { Link } from 'react-router-dom';
 
 class DptList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedDish: null
+            selectedDish: null,
+            items: [],
         }
     }
     
@@ -37,14 +40,24 @@ class DptList extends Component {
     }
     
     render() {
-        const menu = DEPARTMENTS.map((dish) => {
+        fetch(
+            'https://rjs-101x-asignment-04-backend.vercel.app/departments')
+                        .then((res) => res.json())
+                        .then(jso => {
+                            this.setState({
+                               items: jso,
+                            });
+                        })
+
+        const menu = this.state.items.map((dih) => {
             return (
                 <div className="col-12 col-md-5 m-1">
-                    <Card key={dish.id}
-                        onClick={() => this.onDishSelect(dish)}>
-                        <CardText><h4><b> {dish.name} </b></h4></CardText>
-                        <CardText>Số lượng nhân viên: {dish.numberOfStaff} </CardText>
-                    </Card>
+                    <div key={dih.id} >
+                        <Link to={`/phongban/${dih.id}`} style={{color: "black",}}>
+                        <p ><h4 ><b> {dih.name} </b></h4></p>
+                        <p >Số lượng nhân viên: {dih.numberOfStaff} </p>
+                        </Link>
+                    </div>
                 </div>
             );
         });

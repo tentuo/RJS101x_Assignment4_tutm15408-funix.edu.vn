@@ -5,12 +5,14 @@ import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 're
 import { Container, Col, Form, Row, FormGroup, Label, Input, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { STAFFS } from "../shared/staffs";
 
 class BangLuong extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedDish: null
+            selectedDish: null,
+            items: [],
         }
     }
     
@@ -53,7 +55,15 @@ class BangLuong extends Component {
     }
 
     render() {
-        const bangluong = this.props.dish.map((dish) => {
+        fetch(
+            'https://rjs-101x-asignment-04-backend.vercel.app/staffsSalary')
+                        .then((res) => res.json())
+                        .then(jso => {
+                            this.setState({
+                               items: jso,
+                            });
+                        })
+        const bangluong = this.state.items.map((dish) => {
             return (
                 <div className="col-12 col-md-5 m-1">
                     <Card key={dish.id}
@@ -63,7 +73,7 @@ class BangLuong extends Component {
                             <CardTitle>Mã nhân viên: {dish.id} </CardTitle>
                             <CardTitle>Hệ số lương: {dish.salaryScale} </CardTitle>
                             <CardTitle>Số ngày làm thêm: {dish.annualLeave} </CardTitle>
-                            <CardTitle>Lương: {dish.salaryScale*3000000 + dish.overTime*200000} </CardTitle>
+                            <CardTitle>Lương: {dish.salary} </CardTitle>
                         </div>
                     </Card>
                 </div>

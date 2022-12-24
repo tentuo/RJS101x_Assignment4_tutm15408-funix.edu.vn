@@ -15,9 +15,19 @@ import DptList from "./DptListComponent";
 
 function StaffList() {
     
-
-    let initSTAFFS = STAFFS;
+    let initSTAFFS = STAFFS;  
     let [ilist, setList] = React.useState(initSTAFFS);
+    
+    const layve = (e) => {
+      fetch('https://rjs-101x-asignment-04-backend.vercel.app/staffs')
+                    .then(resp => resp.json())
+                    .then(jso => {
+                        setList(jso);
+                    });
+      e.preventDefault();
+    }
+
+
     const addNvien = (nvien) => {setList([...ilist,nvien]); toggleModal();}
 
     const deleteNvien = nvien => {setList(ilist.filter(nvi => nvi.id !== nvien.id))}
@@ -27,7 +37,7 @@ function StaffList() {
     const [doB, setdoB] = React.useState('');
     const [salaryScale, setHsl] = React.useState('');
     const [startDate, setstartDate] = React.useState('');
-    const [department, setdepartment] = React.useState('');
+    const [departmentId, setdepartmentId] = React.useState('');
     const [annualLeave, setannualLeave] = React.useState('');
     const [overTime, setoverTime] = React.useState('');
     const [image, setimage] = React.useState('');
@@ -69,7 +79,7 @@ function StaffList() {
         setstartDate(event.target.value);
       }
       function changedepartment(event){
-        setdepartment(event.target.value);
+        setdepartmentId(event.target.value);
       }
       function changeannualLeave(event){
         setannualLeave(event.target.value);
@@ -93,7 +103,7 @@ function StaffList() {
                             <ModalHeader ><b>Thêm Nhân Viên</b><Button onClick={toggleModal} className="lopcss12" > x </Button></ModalHeader>
                             <ModalBody>
                             <Form>
-                              <Btnthem addNvienProp = {addNvien} deleteNvienProp = {deleteNvien} />
+                              <Btnthem ilistpr={ilist} addNvienProp = {addNvien} deleteNvienProp = {deleteNvien} />
                             </Form>
                             </ModalBody>
                             </Modal>
@@ -124,6 +134,5 @@ function StaffList() {
         );
 
 };
-
 
 export default StaffList;
